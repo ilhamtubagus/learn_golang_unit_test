@@ -1,11 +1,24 @@
 package helper
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"runtime"
 	"testing"
 )
+
+// TestMain is the entry point for the test runner, only executed ONCE PER PACKAGE
+// it sets up the testing environment and runs all tests
+func TestMain(m *testing.M) {
+	// before tests
+	fmt.Println("BEFORE UNIT TESTS")
+
+	m.Run()
+
+	// after tests
+	fmt.Println("AFTER UNIT TESTS")
+}
 
 // TestSkip skips the current test if the current operating system is macOS
 func TestSkip(t *testing.T) {
