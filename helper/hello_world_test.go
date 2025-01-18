@@ -3,9 +3,21 @@ package helper
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"runtime"
 	"testing"
 )
 
+// TestSkip skips the current test if the current operating system is macOS
+func TestSkip(t *testing.T) {
+	if runtime.GOOS == "darwin" {
+		t.Skip("Skipping test on macOS")
+	}
+
+	result := HelloWorld("John")
+	assert.Equal(t, "Hello, John", result, "Expected 'Hello, John'")
+}
+
+// TestHelloWorld unit test with standard go library
 func TestHelloWorld(t *testing.T) {
 	result := HelloWorld("John")
 	if result != "Hello, John" {
