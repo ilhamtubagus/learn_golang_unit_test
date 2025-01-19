@@ -55,8 +55,8 @@ func TestHelloWorldRequire(t *testing.T) {
 	require.Equal(t, "Hello, John", result, "Expected 'Hello, John'")
 }
 
-// TestSubTest unit test with subtests (nested unit tests)
-func TestSubTest(t *testing.T) {
+// TestHelloWorldSubTest unit test with subtests (nested unit tests)
+func TestHelloWorldSubTest(t *testing.T) {
 	t.Run("subtest1", func(t *testing.T) {
 		result := HelloWorld("John")
 		assert.Equal(t, "Hello, John", result, "Expected 'Hello, John' in subtest1")
