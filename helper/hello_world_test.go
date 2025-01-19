@@ -67,3 +67,23 @@ func TestHelloWorldSubTest(t *testing.T) {
 		assert.Equal(t, "Hello, Jane", result, "Expected 'Hello, Jane' in subtest2")
 	})
 }
+
+func TestHelloWorldTable(t *testing.T) {
+	tests := []struct {
+		name     string
+		request  string
+		expected string
+	}{
+		{"John", "John", "Hello, John"},
+		{"Fian", "Fian", "Hello, Fian"},
+		{"Jane", "Jane", "Hello, Jane"},
+	}
+
+	// loop through each test case and run the test
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := HelloWorld(test.request)
+			assert.Equal(t, test.expected, result, fmt.Sprintf("Expected '%s', got %s", test.expected, result))
+		})
+	}
+}
